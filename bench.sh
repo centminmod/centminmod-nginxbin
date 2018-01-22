@@ -5,7 +5,7 @@
 # https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/
 # http://nginx.org/en/docs/http/ngx_http_core_module.html
 #########################################################
-WORKDIR='binaries'
+WORKDIR='binaries/nginx-1.13.8'
 NGINXBIN_DFT='/usr/local/sbin/nginx'
 NGINX_CONFIGFILE='/usr/local/nginx/conf/nginx.conf'
 NGINXBACKUP_BIN="${NGINXBIN_DFT}-bench-backup"
