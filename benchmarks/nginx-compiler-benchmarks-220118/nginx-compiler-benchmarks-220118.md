@@ -41,7 +41,7 @@ Test Parameters
 wrk Results
 ===
 
-![](benchmarks/nginx-compiler-benchmarks-220118/chart1.png)
+![](/benchmarks/nginx-compiler-benchmarks-220118/chart1.png)
 
 | Nginx Config | Req/s |  Thread 1 Req | Thread 1 Resp |  Thread 2 Req | Thread 2 Resp |  Thread 3 Req | Thread 3 Resp |  Total Threads Req | Total Threads Resp |  Avg Latency (ms) | Max Latency (ms)
 | --- | --- |  --- | --- |  --- | --- |  --- | --- |  --- | --- |  --- | ---
