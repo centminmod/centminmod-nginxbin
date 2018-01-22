@@ -44,7 +44,7 @@ wrk Results
 ![](/benchmarks/nginx-compiler-benchmarks-220118/chart1.png)
 
 | Nginx Config | Req/s |  Thread 1 Req | Thread 1 Resp |  Thread 2 Req | Thread 2 Resp |  Thread 3 Req | Thread 3 Resp | Avg Latency (ms) | Max Latency (ms)
-| --- | --- |  --- | --- |  --- | --- |  --- | --- |  --- | --- |  --- | ---
+| --- | --- |  --- | --- |  --- | --- |  --- | --- |  --- | --- 
 | nginx-clang342 | 47134.08 |  934853 | 934659 |  931701 | 931503 |  966044 | 965846 |  11.59| 96.81
 | nginx-clang401 | 48922.71 |  994152 | 993951 |  967786 | 967588 |  976353 | 976154 |  11.35 | 109.00
 | nginx-clang501 | 48301.24 |  956973 | 956773 |  964148 | 963984 |  980679 | 980553 |  11.25 | 98.96
