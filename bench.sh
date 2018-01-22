@@ -2,9 +2,12 @@
 #########################################################
 # benchmark nginx binaries compiled with different compilers
 # for centminmod.com lemp stack built nginx web server
+# https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/
+# http://nginx.org/en/docs/http/ngx_http_core_module.html
 #########################################################
 WORKDIR='binaries'
 NGINXBIN_DFT='/usr/local/sbin/nginx'
+NGINX_CONFIGFILE='/usr/local/nginx/conf/nginx.conf'
 NGINXBACKUP_BIN="${NGINXBIN_DFT}-bench-backup"
 
 # wrk binary and parameters
@@ -34,6 +37,7 @@ restorebin() {
 startbench() {
   # stop default nginx server
   service nginx stop >/dev/null 2>&1
+  ps xao pid,ppid,command | grep 'nginx[:] [master|worker]' |awk '{print $1}' | xargs -n1 | while read p; do kill -9 $p >/dev/null 2>&1 ; done
   sleep 2
   echo
   
@@ -51,15 +55,15 @@ for b in ${BINLIST[@]}; do
   echo
   # start nginx binary
   echo "start ${WORKDIR}/$b"
-  nohup "${WORKDIR}/$b" >/dev/null 2>&1 &
+  nohup "${WORKDIR}/$b" -c "$NGINX_CONFIGFILE" >/dev/null 2>&1 &
   sleep 10
   ps xao pid,ppid,command | grep 'nginx[:] [master|worker]'
   echo
 
   # wrk
   if [[ -f "$WRKBIN" ]]; then
-    echo "$WRKBIN -c${USERS} -d${DURATION} $WRK_OPTS $TARGET_URL"
-    $WRKBIN -c${USERS} -d${DURATION} $WRK_OPTS $TARGET_URL
+    echo "$WRKBIN -c${USERS} -d${DURATION} $WRK_OPTS -H 'Accept-Encoding: gzip' $TARGET_URL"
+    $WRKBIN -c${USERS} -d${DURATION} $WRK_OPTS -H 'Accept-Encoding: gzip' "$TARGET_URL"
     echo
   fi
 
