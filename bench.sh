@@ -13,9 +13,13 @@ NGINXBACKUP_BIN="${NGINXBIN_DFT}-bench-backup"
 # wrk binary and parameters
 WRKBIN='/usr/local/bin/wrk-cmm'
 WRK_OPTS='--breakout'
-USERS='200'
-DURATION='20s'
+THREADS='1'
+USERS='300'
+DURATION='30s'
 TARGET_URL='http://localhost/'
+
+SLEEPTIME='15'
+DEBUG='n'
 #########################################################
 
 backupbin() {
@@ -56,14 +60,16 @@ for b in ${BINLIST[@]}; do
   # start nginx binary
   echo "start ${WORKDIR}/$b"
   nohup "${WORKDIR}/$b" -c "$NGINX_CONFIGFILE" >/dev/null 2>&1 &
-  sleep 10
-  ps xao pid,ppid,command | grep 'nginx[:] [master|worker]'
+  sleep $SLEEPTIME
+  if [[ "$DEBUG" = [yY] ]]; then
+    ps xao pid,ppid,command | grep 'nginx[:] [master|worker]'
+  fi
   echo
 
   # wrk
   if [[ -f "$WRKBIN" ]]; then
-    echo "$WRKBIN -c${USERS} -d${DURATION} $WRK_OPTS -H 'Accept-Encoding: gzip' $TARGET_URL"
-    $WRKBIN -c${USERS} -d${DURATION} $WRK_OPTS -H 'Accept-Encoding: gzip' "$TARGET_URL"
+    echo "$WRKBIN -t${THREADS} -c${USERS} -d${DURATION} $WRK_OPTS -H 'Accept-Encoding: gzip' $TARGET_URL"
+    $WRKBIN -t${THREADS} -c${USERS} -d${DURATION} $WRK_OPTS -H 'Accept-Encoding: gzip' "$TARGET_URL"
     echo
   fi
 
@@ -72,10 +78,14 @@ for b in ${BINLIST[@]}; do
   echo
 
   # stop nginx process
-  echo "kill ${WORKDIR}/$b processes"
-  # echo "$(pidof ${WORKDIR}/$b)" | xargs -n1 | while read p; do echo "kill -9 $p"; kill -9 $p; done
-  ps xao pid,ppid,command | grep 'nginx[:] [master|worker]' |awk '{print $1}' | xargs -n1 | while read p; do echo "kill -9 $p"; kill -9 $p; done
-  sleep 10
+  if [[ "$DEBUG" = [yY] ]]; then
+    echo "kill ${WORKDIR}/$b processes"
+    # echo "$(pidof ${WORKDIR}/$b)" | xargs -n1 | while read p; do echo "kill -9 $p"; kill -9 $p; done
+    ps xao pid,ppid,command | grep 'nginx[:] [master|worker]' |awk '{print $1}' | xargs -n1 | while read p; do echo "kill -9 $p"; kill -9 $p; done
+    sleep $SLEEPTIME
+  else
+    ps xao pid,ppid,command | grep 'nginx[:] [master|worker]' |awk '{print $1}' | xargs -n1 | while read p; do kill -9 $p; done
+  fi
 done
 
   # restorebin
