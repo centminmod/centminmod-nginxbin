@@ -43,25 +43,25 @@ wrk Results
 
 ![](/benchmarks/nginx-compiler-benchmarks-220118/chart1.png)
 
-| Nginx Config | Req/s |  Thread 1 Req | Thread 1 Resp |  Thread 2 Req | Thread 2 Resp |  Thread 3 Req | Thread 3 Resp |  Total Threads Req | Total Threads Resp |  Avg Latency (ms) | Max Latency (ms)
+| Nginx Config | Req/s |  Thread 1 Req | Thread 1 Resp |  Thread 2 Req | Thread 2 Resp |  Thread 3 Req | Thread 3 Resp | Avg Latency (ms) | Max Latency (ms)
 | --- | --- |  --- | --- |  --- | --- |  --- | --- |  --- | --- |  --- | ---
-| nginx-clang342 | 47134.08 |  934853 | 934659 |  931701 | 931503 |  966044 | 965846 |  Total Threads Req | Total Threads Resp |  11.59| 96.81
-| nginx-clang401 | 48922.71 |  994152 | 993951 |  967786 | 967588 |  976353 | 976154 |  Total Threads Req | Total Threads Resp |  11.35 | 109.00
-| nginx-clang501 | 48301.24 |  956973 | 956773 |  964148 | 963984 |  980679 | 980553 |  Total Threads Req | Total Threads Resp |  11.25 | 98.96
-| nginx-clang6 | 49120.42 |  1020099 | 1019911 |  952318 | 952120 |  979781 | 979649 |  Total Threads Req | Total Threads Resp |  11.40 | 110.03
-| nginx-gcc485 | 48710.11 |  964719 | 964639 |  962278 | 962100 |  997852 | 997706 |  Total Threads Req | Total Threads Resp |  11.25 | 151.88
-| nginx-gcc531 | 49305.56 |  986784 | 986586 |  983572 | 983376 |  990742 | 990544 |  Total Threads Req | Total Threads Resp |  11.25 | 115.18
-| nginx-gcc631 | 48934.98 |  1014397 | 1014197 |  954473 | 954273 |  972022 | 971836 |  Total Threads Req | Total Threads Resp |  11.29 | 107.48
-| nginx-gcc721 | 49194.71 |  952032 | 951864 |  1021887 | 1021688 |   982547 | 982404 |  Total Threads Req | Total Threads Resp |  11.06 | 124.10
-| nginx-gcc8 | 49052.53 |  1032737 | 1032552 |  958271 | 958115 |  957353 | 957154 |  Total Threads Req | Total Threads Resp |  11.25 | 106.98
-| nginx-clang401-cfzlib | 60080.29 |  1202435 | 1202374 |  1218398 | 1218272 |  1184578 | 1184558 |  Total Threads Req | Total Threads Resp |  9.48 | 83.55
-| nginx-clang501-cfzlib | 59858.31 |  1187757 | 1187558 |  1214914 | 1214724 |  1194567 | 1194368 |  Total Threads Req | Total Threads Resp |  9.76 | 99.05
-| nginx-clang6-cfzlib | 60935.30 |  1229099 | 1228914 |  1216305 | 1216107 |  1216964 | 1216893 |  Total Threads Req | Total Threads Resp |  9.37 | 75.23
-| nginx-gcc485-cfzlib | 59469.71 |  1180397 | 1180309 |  1188177 | 1188078 |  1204639 | 1204442 |  Total Threads Req | Total Threads Resp |  9.62 | 112.14
-| nginx-gcc531-cfzlib | 60258.10 |  1143884 | 1143683 |  1268216 | 1268054 |  1208024 | 1207924 |  Total Threads Req | Total Threads Resp |  9.56 | 108.15
-| nginx-gcc631-cfzlib | 60234.86 |  1178666 | 1178466 |  1249928 | 1249787 |  1191667 | 1191630 |  Total Threads Req | Total Threads Resp |  9.65 | 116.94
-| nginx-gcc721-cfzlib | 60408.18 |  1226444 | 1226244 |  1181644 | 1181446 |  1222316 | 1222131 |  Total Threads Req | Total Threads Resp |  9.64 | 118.25
-| nginx-gcc8-cfzlib | 60155.73 |  1198502 | 1198308 |  1211573 | 1211374 |  1205257 | 1205059 |  Total Threads Req | Total Threads Resp |  9.57 | 114.88
+| nginx-clang342 | 47134.08 |  934853 | 934659 |  931701 | 931503 |  966044 | 965846 |  11.59| 96.81
+| nginx-clang401 | 48922.71 |  994152 | 993951 |  967786 | 967588 |  976353 | 976154 |  11.35 | 109.00
+| nginx-clang501 | 48301.24 |  956973 | 956773 |  964148 | 963984 |  980679 | 980553 |  11.25 | 98.96
+| nginx-clang6 | 49120.42 |  1020099 | 1019911 |  952318 | 952120 |  979781 | 979649 |  11.40 | 110.03
+| nginx-gcc485 | 48710.11 |  964719 | 964639 |  962278 | 962100 |  997852 | 997706 |  11.25 | 151.88
+| nginx-gcc531 | 49305.56 |  986784 | 986586 |  983572 | 983376 |  990742 | 990544 |  11.25 | 115.18
+| nginx-gcc631 | 48934.98 |  1014397 | 1014197 |  954473 | 954273 |  972022 | 971836 |  11.29 | 107.48
+| nginx-gcc721 | 49194.71 |  952032 | 951864 |  1021887 | 1021688 |   982547 | 982404 |  11.06 | 124.10
+| nginx-gcc8 | 49052.53 |  1032737 | 1032552 |  958271 | 958115 |  957353 | 957154 |  11.25 | 106.98
+| nginx-clang401-cfzlib | 60080.29 |  1202435 | 1202374 |  1218398 | 1218272 |  1184578 | 1184558 |  9.48 | 83.55
+| nginx-clang501-cfzlib | 59858.31 |  1187757 | 1187558 |  1214914 | 1214724 |  1194567 | 1194368 |  9.76 | 99.05
+| nginx-clang6-cfzlib | 60935.30 |  1229099 | 1228914 |  1216305 | 1216107 |  1216964 | 1216893 |  9.37 | 75.23
+| nginx-gcc485-cfzlib | 59469.71 |  1180397 | 1180309 |  1188177 | 1188078 |  1204639 | 1204442 |  9.62 | 112.14
+| nginx-gcc531-cfzlib | 60258.10 |  1143884 | 1143683 |  1268216 | 1268054 |  1208024 | 1207924 |  9.56 | 108.15
+| nginx-gcc631-cfzlib | 60234.86 |  1178666 | 1178466 |  1249928 | 1249787 |  1191667 | 1191630 |  9.65 | 116.94
+| nginx-gcc721-cfzlib | 60408.18 |  1226444 | 1226244 |  1181644 | 1181446 |  1222316 | 1222131 |  9.64 | 118.25
+| nginx-gcc8-cfzlib | 60155.73 |  1198502 | 1198308 |  1211573 | 1211374 |  1205257 | 1205059 |  9.57 | 114.88
 
 ```
 ./bench.sh 
