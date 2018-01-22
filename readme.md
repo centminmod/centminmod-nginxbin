@@ -13,7 +13,7 @@ Compiled on CentOS 7.4 64bit system at using Intel Core i7 4790K.
 * `nginx-clang6-cfzlib` - Clang 6.0.0 snapshot built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
 * `nginx-clang501-cfzlib` - Clang 5.0.1 snapshot built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
 * `nginx-clang401-cfzlib` - Clang 4.0.1 built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
-* `nginx-clang342-cfzlib` - Clang 3.4.2 built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
+* `nginx-clang342-cfzlib` - unable to compile due to errors with Cloudflare Zlib patch and Clang 3.4.2. Centmin Mod will fallback to Clang 4.0.1 if `CLANG='y'` set or fallback to GCC if `CLANG='n'` set
 * `nginx-gcc8` - GCC 8 snapshot built Centmin Mod Nginx 1.13.8 web server
 * `nginx-gcc721` - GCC 7.2.1 built Centmin Mod Nginx 1.13.8 web server
 * `nginx-gcc631` - GCC 6.3.1 built Centmin Mod Nginx 1.13.8 web server
