@@ -1,7 +1,9 @@
 Centmin Mod Nginx Binaries
 ===
 
-Collection of Centmin Mod built Nginx binaries compiled using different compilers for benchmark comparison tests. Compiled on CentOS 7.4 64bit system at using Intel Core i7 4790K.
+Collection of Centmin Mod built Nginx binaries compiled using different compilers for benchmark comparison tests. Benchmarks using forked version of `wrk` [https://github.com/centminmod/wrk/tree/centminmod](https://github.com/centminmod/wrk/tree/centminmod).
+
+Compiled on CentOS 7.4 64bit system at using Intel Core i7 4790K.
 
 * `nginx-gcc8` - GCC 8 snapshot built Centmin Mod Nginx 1.13.8 web server
 * `nginx-gcc721` - GCC 7.2.1 built Centmin Mod Nginx 1.13.8 web server
