@@ -10,8 +10,8 @@ NGINXBACKUP_BIN="${NGINXBIN_DFT}-bench-backup"
 # wrk binary and parameters
 WRKBIN='/usr/local/bin/wrk-cmm'
 WRK_OPTS='--breakout'
-USERS='100'
-DURATION='10s'
+USERS='200'
+DURATION='20s'
 TARGET_URL='http://localhost/'
 #########################################################
 
@@ -40,7 +40,7 @@ startbench() {
   # backup binary
   # backupbin
 
-BINLIST='nginx-clang342 nginx-clang401 nginx-clang501 nginx-clang6 nginx-gcc531 nginx-gcc631 nginx-gcc721 nginx-gcc8'
+BINLIST='nginx-clang342 nginx-clang401 nginx-clang501 nginx-clang6 nginx-gcc485 nginx-gcc531 nginx-gcc631 nginx-gcc721 nginx-gcc8'
 for b in ${BINLIST[@]}; do
   echo
   echo "-----------------------------------------------------------------------------------"
@@ -52,7 +52,7 @@ for b in ${BINLIST[@]}; do
   # start nginx binary
   echo "start ${WORKDIR}/$b"
   nohup "${WORKDIR}/$b" >/dev/null 2>&1 &
-  sleep 5
+  sleep 10
   ps xao pid,ppid,command | grep 'nginx[:] [master|worker]'
   echo
 
@@ -63,10 +63,15 @@ for b in ${BINLIST[@]}; do
     echo
   fi
 
+  # ss stats
+  ss -s
+  echo
+
   # stop nginx process
   echo "kill ${WORKDIR}/$b processes"
-  echo "$(pidof ${WORKDIR}/$b)" | xargs -n1 | while read p; do echo "kill -9 $p"; kill -9 $p; done
-  sleep 5
+  # echo "$(pidof ${WORKDIR}/$b)" | xargs -n1 | while read p; do echo "kill -9 $p"; kill -9 $p; done
+  ps xao pid,ppid,command | grep 'nginx[:] [master|worker]' |awk '{print $1}' | xargs -n1 | while read p; do echo "kill -9 $p"; kill -9 $p; done
+  sleep 10
 done
 
   # restorebin
