@@ -48,7 +48,7 @@ startbench() {
   # backup binary
   # backupbin
 
-BINLIST='nginx-clang342 nginx-clang401 nginx-clang501 nginx-clang6 nginx-gcc485 nginx-gcc531 nginx-gcc631 nginx-gcc721 nginx-gcc8'
+BINLIST='nginx-clang342 nginx-clang401 nginx-clang501 nginx-clang6 nginx-gcc485 nginx-gcc531 nginx-gcc631 nginx-gcc721 nginx-gcc8 nginx-clang401-cfzlib nginx-clang501-cfzlib nginx-clang6-cfzlib nginx-gcc485-cfzlib nginx-gcc531-cfzlib nginx-gcc631-cfzlib nginx-gcc721-cfzlib nginx-gcc8-cfzlib'
 for b in ${BINLIST[@]}; do
   echo
   echo "-----------------------------------------------------------------------------------"

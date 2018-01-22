@@ -5,6 +5,15 @@ Collection of Centmin Mod built Nginx binaries compiled using different compiler
 
 Compiled on CentOS 7.4 64bit system at using Intel Core i7 4790K.
 
+* `nginx-gcc8-cfzlib` - GCC 8 snapshot built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
+* `nginx-gcc721-cfzlib` -  GCC 7.2.1 built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
+* `nginx-gcc631-cfzlib` - GCC 6.3.1 built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
+* `nginx-gcc531-cfzlib` - GCC 5.3.1 built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
+* `nginx-gcc485-cfzlib` - GCC 4.8.5 built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
+* `nginx-clang6-cfzlib` - Clang 6.0.0 snapshot built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
+* `nginx-clang501-cfzlib` - Clang 5.0.1 snapshot built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
+* `nginx-clang401-cfzlib` - Clang 4.0.1 built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
+* `nginx-clang342-cfzlib` - Clang 3.4.2 built Centmin Mod Nginx 1.13.8 web server + [Cloudflare zlib performance patch](https://github.com/cloudflare/zlib)
 * `nginx-gcc8` - GCC 8 snapshot built Centmin Mod Nginx 1.13.8 web server
 * `nginx-gcc721` - GCC 7.2.1 built Centmin Mod Nginx 1.13.8 web server
 * `nginx-gcc631` - GCC 6.3.1 built Centmin Mod Nginx 1.13.8 web server
