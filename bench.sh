@@ -13,7 +13,7 @@ NGINXBACKUP_BIN="${NGINXBIN_DFT}-bench-backup"
 # wrk binary and parameters
 WRKBIN='/usr/local/bin/wrk-cmm'
 WRK_OPTS='--breakout'
-THREADS='2'
+THREADS='3'
 USERS='300'
 DURATION='30s'
 TARGET_URL='http://localhost/'
@@ -69,16 +69,20 @@ for b in ${BINLIST[@]}; do
   # wrk
   if [[ -f "$WRKBIN" ]]; then
     curl -I "$TARGET_URL"
-    curl -sw "\n DNS Lookup: %{time_namelookup}\n SSL Handshake (time_appconnect): %{time_appconnect}\n TCP Connect time: %{time_connect}\n Pre-Transfer Negotiations: %{time_pretransfer}\n Redirect Time: %{time_redirect}\n TTFB (includes pre-transfer): %{time_starttransfer}\n Total time: %{time_total}\n" -o /dev/null $TARGET_URL
+    if [[ "$DEBUG" = [yY] ]]; then
+      curl -sw "\n DNS Lookup: %{time_namelookup}\n SSL Handshake (time_appconnect): %{time_appconnect}\n TCP Connect time: %{time_connect}\n Pre-Transfer Negotiations: %{time_pretransfer}\n Redirect Time: %{time_redirect}\n TTFB (includes pre-transfer): %{time_starttransfer}\n Total time: %{time_total}\n" -o /dev/null $TARGET_URL
+    fi
     echo
-    echo "$WRKBIN -t${THREADS} -c${USERS} -d${DURATION} $WRK_OPTS -H 'Accept-Encoding: gzip' $TARGET_URL"
-    $WRKBIN -t${THREADS} -c${USERS} -d${DURATION} $WRK_OPTS -H 'Accept-Encoding: gzip' "$TARGET_URL"
+    echo "$WRKBIN -t${THREADS} -c${USERS} -d${DURATION} $WRK_OPTS -H 'Accept-Encoding: gzip' -s scripts/setup.lua $TARGET_URL"
+    $WRKBIN -t${THREADS} -c${USERS} -d${DURATION} $WRK_OPTS -H 'Accept-Encoding: gzip' -s scripts/setup.lua "$TARGET_URL"
     echo
   fi
 
-  # ss stats
-  ss -s
-  echo
+  if [[ "$DEBUG" = [yY] ]]; then
+    # ss stats
+    ss -s
+    echo
+  fi
 
   # stop nginx process
   if [[ "$DEBUG" = [yY] ]]; then
